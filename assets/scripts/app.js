@@ -1,42 +1,62 @@
+/** @format */
+
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEtres = [];
 
 const getUserNumberInput = () => parseInt(userInput.value);
-
 const createAndWriteOutput = (operator, resultBeforeCalc, calcNumber) => {
-  const calcDescription = `${resultBeforeCalc}  ${operator}  ${calcNumber}`;
-  outputResult(currentResult, calcDescription);
+	const calcDescription = `${resultBeforeCalc}  ${operator}  ${calcNumber}`;
+	outputResult(currentResult, calcDescription);
 };
 
-const add = () => {
-  const entredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult + entredNumber;
-  createAndWriteOutput("+", initialResult, entredNumber);
-};
-
-const subtract = () => {
-  const entredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult - entredNumber;
-  createAndWriteOutput("-", initialResult, entredNumber);
-};
-
-const multiply = () => {
-  const entredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult * entredNumber;
-  createAndWriteOutput("*", initialResult, entredNumber);
-};
-
-const divid = () => {
-  const entredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult / entredNumber;
-  createAndWriteOutput("/", initialResult, entredNumber);
-};
-
+// EddEventListener
 addBtn.addEventListener("click", add);
 subtractBtn.addEventListener("click", subtract);
 multiplyBtn.addEventListener("click", multiply);
 divideBtn.addEventListener("click", divid);
+
+const add = () => calculateResult("ADD");
+const subtract = () => calculateResult("SUBTRACT");
+const multiply = () => calculateResult("MULTIPLY");
+const divid = () => calculateResult("DIVIDE");
+
+const calculateResult = (calculationType) => {
+	const entredNumber = getUserNumberInput();
+	const initialResult = currentResult;
+	let mathOperator;
+	if (calculationType === "ADD") {
+		currentResult += entredNumber;
+		mathOperator = "+";
+	} else if (calculationType === "SUBTRACT") {
+		currentResult -= entredNumber;
+		mathOperator = "-";
+	} else if (calculationType === "MULTIPLY") {
+		currentResult *= entredNumber;
+		mathOperator = "*";
+	} else {
+		currentResult /= entredNumber;
+		mathOperator = "/";
+	}
+
+	createAndWriteOutput(mathOperator, initialResult, entredNumber);
+	// writeToLog(calculationType, initialResult, entredNumber, currentResult);
+};
+
+function writeToLog(
+	operationIdentfire,
+	prevsResult,
+	operationNumber,
+	newResult,
+) {
+	let obj = {
+		operation: operationIdentfire,
+		prevsResult: prevsResult,
+		number: operationNumber,
+		result: newResult,
+	};
+
+	logEtres.push(obj);
+	console.log(obj);
+	console.log(logEtres);
+}
