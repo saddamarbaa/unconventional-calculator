@@ -5,7 +5,7 @@
  
  
 
-### Live Demo: todo :  https://saddamarbaa.github.io/unconventional-calculator/
+### Live Demo: https://saddamarbaa.github.io/unconventional-calculator/
 
 
 
