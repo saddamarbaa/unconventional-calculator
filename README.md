@@ -4,7 +4,7 @@
  building a mini unconventional calculator project, Variables, functions, control statement, loops 
  
 
-### Live Demo: https://www.loom.com/share/f12fc1bd902e49168474b8a511b4ef67
+### <a href="https://www.loom.com/share/f12fc1bd902e49168474b8a511b4ef67">LIVE DEMO</a>
 
 
 ### Click the link blow to Play [GitHub Pages] : https://saddamarbaa.github.io/unconventional-calculator/
